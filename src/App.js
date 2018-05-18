@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person, { Person2 } from './Person/Person'
+import Person from './Person/Person'
 
 class App extends Component {
 
   state = {
     persons: [
       { name: 'max', age: 28},
-      {name: 'sally', age:29},
+      { name: 'sally', age:29},
       { name: 'harry', age: 45}
     ],
     otherState: 'some other value'
   }
+
   switchNameHandler=() => {
-    console.log ( "button pressed")
-    this.setState(...this.state, {name: "harry"})
+    this.setState( {
+    persons: [
+      { name: 'Sam', age: 48},
+      { name: 'Sal', age:19},
+      { name: 'Harold', age: 25}
+    ]
+    })
   }
   
   render() {
@@ -22,10 +28,9 @@ class App extends Component {
       <div className="App">
       <h1>Hi I am a react App! </h1>
       <button onClick={this.switchNameHandler}>Switch Name</button>
-      <Person name ="Max"/>
-      <Person2 name = "harry" age = '33'/>
-      <Person  name = "Sally" />
-      <Person2 name  = "sam" age = '44'> My dog is small </Person2>
+      <Person name ={this.state.persons[0].name} age={this.state.persons[0].age} />
+      <Person name ={this.state.persons[1].name} age={this.state.persons[1].age} />
+      <Person name ={this.state.persons[2].name} age={this.state.persons[2].age} />
       </div>
     );
   }

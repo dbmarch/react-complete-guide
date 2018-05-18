@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 
-const Person2 = (props ) => {
+const person = ( props ) => {
     return (
         <div>
-            <p> My name is {props.name} and I am { props.age } years old! </p>
-            <p> {props.children} </p>
+            <p> I'm {props.name} and I am { props.age} years old ! </p>
+            <p> {props.children}</p>
         </div>
     )
 }
-
 class Person extends Component {
-    state = { name: "me" };
+    state = { name: "me", age:29 };
     
     render() {
         return (
             <div>
-                My name is {this.state.name}
+                My name is {this.state.name} and I am {this.state.age} years old.
             </div>
         );
     }
 }
 
-export {Person2};
-export default  Person;
+export default  person;
