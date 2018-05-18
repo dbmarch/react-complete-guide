@@ -13,10 +13,10 @@ class App extends Component {
     otherState: 'some other value'
   }
 
-  switchNameHandler=() => {
+  switchNameHandler=(newName) => {
     this.setState( {
     persons: [
-      { name: 'Sam', age: 48},
+      { name: newName, age: 48},
       { name: 'Sal', age:19},
       { name: 'Harold', age: 25}
     ]
@@ -27,14 +27,14 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Hi I am a react App! </h1>
-      <button onClick={this.switchNameHandler}>Switch Name</button>
+      <button onClick={this.switchNameHandler.bind(this,'Toby')}>Switch Name</button>
       <Person
          name ={this.state.persons[0].name} 
          age={this.state.persons[0].age} />
       <Person 
         name ={this.state.persons[1].name} 
         age={this.state.persons[1].age} 
-        click = {this.switchNameHandler} >My Hobbies: Scuba</Person>
+        click = {this.switchNameHandler.bind(this,'Misty')} >My Hobbies: Scuba</Person>
       <Person 
         name ={this.state.persons[2].name} 
         age={this.state.persons[2].age} />
