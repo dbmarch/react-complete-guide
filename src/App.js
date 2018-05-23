@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
 
@@ -50,10 +49,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       borderRadius: '10px',
-      ':hover':   {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     };
     let persons = null;
     if (this.state.showPersons) {
@@ -86,7 +81,6 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
       <div className="App">
       <h1>Hi I am a react App! </h1>
       <p className = {classes.join(' ')} > This is working! </p>
@@ -94,9 +88,8 @@ class App extends Component {
               onClick= {this.togglePersonsHandler}>Switch Name</button>
       {persons}      
       </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
