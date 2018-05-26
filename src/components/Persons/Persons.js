@@ -46,6 +46,7 @@ class Persons extends PureComponent {
             age  = {person.age} 
             position = {index}
             ref = {this.lastPersonRef}
+            authenticated = {this.props.isAuthenticated}
             key={index}
             changed = {(event)=>this.props.changed(event, index)}
             />

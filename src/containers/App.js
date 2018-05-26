@@ -4,6 +4,9 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import WithClass from '../hoc/WithClass';
 
+export const AuthContext = React.createContext(false);
+
+
 class App extends PureComponent {
 
   constructor (props){
@@ -17,7 +20,8 @@ class App extends PureComponent {
         ],
         otherState: 'some other value',
         showPersons: false,
-        toggleClicked: 0
+        toggleClicked: 0,
+        authenticated: false
       };
   }
 
@@ -78,6 +82,13 @@ componentDidUpdate() {
         });
      }
   
+  loginHandler = () =>{
+
+    console.log ('loginHandler', this.state.authenticated);
+
+    this.setState({authenticated: true});
+  }
+
   render() {
     console.log('[App.js] Render');
     let persons = null;
@@ -87,8 +98,9 @@ componentDidUpdate() {
           <Persons 
                 persons = {this.state.persons }
                 clicked = {this.deletePersonHandler}
-                changed = {this.nameChangedHandler} />
-       );
+                changed = {this.nameChangedHandler}
+//                isAuthenticated = {this.state.authenticated} 
+      /> );
     }
 
     //let classes = ['red', 'bold'].join(' ');
@@ -101,8 +113,11 @@ componentDidUpdate() {
           appTitle={this.props.title}
           showPersons = {this.state.showPersons}
           persons={this.state.persons}
+          login = {this.loginHandler}
           clicked = {this.togglePersonsHandler}/>
-          {persons}      
+          <AuthContext.Provider value = {this.state.authenticated}>  
+          {persons}    
+          </AuthContext.Provider>
       </WithClass>
     );
   }
