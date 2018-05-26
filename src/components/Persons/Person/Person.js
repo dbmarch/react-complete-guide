@@ -12,6 +12,7 @@ class Person extends Component {
         this.inputElement = React.createRef();
     }
 
+    // Discouraged:
     componentWillMount() {
         console.log('[Person.js] ComponentWillMount');
       }

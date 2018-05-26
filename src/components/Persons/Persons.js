@@ -8,6 +8,7 @@ class Persons extends PureComponent {
         this.lastPersonRef = React.createRef();
     }
 
+    // use is discouraged
     componentWillMount() {
         console.log('[Persons.js] componentWillMount');
       }
@@ -17,6 +18,7 @@ class Persons extends PureComponent {
 //        this.lastPersonRef.current.focus();
       }
 
+    // use is discouraged
     componentWillReceiveProps () {
         console.log ('[Persons.js] componentWillReceiveProps');
     }
@@ -25,7 +27,7 @@ class Persons extends PureComponent {
     //     console.log ('[Persons.js] shouldComponentUpdate', nextProps);
     //     return nextProps.persons !== this.props.persons;
     // }       
-
+    // use is discouraged    
     componentWillUpdate (nextProps, nextState) {
         console.log ('[Persons.js] componentWillUpdate', nextProps);
     }

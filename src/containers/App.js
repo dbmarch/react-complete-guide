@@ -24,7 +24,7 @@ class App extends PureComponent {
         authenticated: false
       };
   }
-
+// use is discouraged
   componentWillMount() {
     console.log('[App.js] ComponentWillMount');
   }
@@ -38,6 +38,7 @@ class App extends PureComponent {
 //     return nextState.persons!==this.state.persons || nextState.showPersons!=this.state.showPersons;
 // }       
 
+// use is discouraged
 componentWillUpdate (nextProps, nextState) {
     console.log ('[App.js] componentWillUpdate', nextProps);
 }
@@ -46,6 +47,18 @@ componentDidUpdate() {
     console.log ('[App.js] componentDidUpdate');
 }
 
+static getDerivedStateFromProps (nextProps, prevState) {
+
+  console.log ('[App.js] getDerivedStateFromProps',
+      nextProps, prevState);
+  return prevState;
+}
+
+getSnapshotBeforeUpdate() {
+
+  console.log ('[App.js] getSnapshotBeforeUpdate')
+
+}
   deletePersonHandler = (personIndex) => {
     //const persons = this.state.persons.slice();  // make a shallow copy
     const persons = [...this.state.persons];
