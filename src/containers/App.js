@@ -65,10 +65,18 @@ componentDidUpdate() {
   }
 
   togglePersonsHandler = () => {
+
      const show = this.state.showPersons;
-     this.setState({showPersons: !show,
-     toggleClicked: this.state.toggledClicked+1});
-  }
+    
+    // 2 ways to set state without mutating it 
+    //  const count = this.state.toggleClicked + 1;
+    //  this.setState({showPersons: !show, toggleClicked: count});
+
+     this.setState((prevState, props) => {
+        return {showPersons: !show,
+                toggleClicked: prevState.toggleClicked+1}
+        });
+     }
   
   render() {
     console.log('[App.js] Render');
