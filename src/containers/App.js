@@ -26,7 +26,19 @@ class App extends Component {
   componentDidMount() {
     console.log ('[App.js] ComponentDidMount');
   }
-  
+  shouldComponentUpdate(nextProps, nextState){
+    console.log ('[App.js] shouldComponentUpdate', nextProps);
+    return nextState.persons!==this.state.persons || nextState.showPersons!=this.state.showPersons;
+}       
+
+componentWillUpdate (nextProps, nextState) {
+    console.log ('[App.js] componentWillUpdate', nextProps);
+}
+
+componentDidUpdate() {
+    console.log ('[App.js] componentDidUpdate');
+}
+
   deletePersonHandler = (personIndex) => {
     //const persons = this.state.persons.slice();  // make a shallow copy
     const persons = [...this.state.persons];
@@ -70,6 +82,9 @@ class App extends Component {
     //let classes = ['red', 'bold'].join(' ');
     return (
       <div className={classes.App}>
+      <button onClick={
+          ()=>this.setState({showPersons: true})} >
+          ShowPersons</button>
       <Cockpit 
           appTitle={this.props.title}
           showPersons = {this.state.showPersons}
