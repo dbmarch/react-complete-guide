@@ -8,13 +8,22 @@ class Persons extends Component {
     }
 
     componentWillMount() {
-        console.log('[Persons.js] ComponentWillMount');
+        console.log('[Persons.js] componentWillMount');
       }
     
       componentDidMount() {
-        console.log ('[Persons.js] ComponentDidMount');
+        console.log ('[Persons.js] componentDidMount');
       }
-          
+
+    componentWillReceiveProps () {
+        console.log ('[Persons.js] componentWillReceiveProps');
+    }
+    
+    shouldComponentUpdate(nextProps, nextState){
+        console.log ('[Persons.js] shouldComponentUpdate');
+        return false;
+    }       
+
     render() {
         console.log ('[Persons.js] render');
         
