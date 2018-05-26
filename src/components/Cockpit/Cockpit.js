@@ -18,13 +18,13 @@ const cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>  
+        <h1>{ props.appTitle }</h1>
         <h1>Hi I am a react App! </h1>
         <p className = {assignedClasses.join(' ')} > This is working! </p>
         <button className={btnClass}
                 onClick= {props.clicked}>Switch Name</button> 
         </div>
-  
-    );
+      );
 }
 
 export default cockpit;
