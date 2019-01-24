@@ -1,8 +1,7 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions';
 
 const initialState = {
 	counter: 0,
-	results: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,13 +14,6 @@ const reducer = (state = initialState, action) => {
 			return { ...state, counter: state.counter + action.value };
 		case actionTypes.SUBTRACT:
 			return { ...state, counter: state.counter - action.value };
-		case actionTypes.STORE_RESULT:
-			return { ...state, results: [...state.results, state.counter] };
-		case actionTypes.DELETE_RESULT:
-			console.log(action);
-			let newResults = state.results.slice(0);
-			newResults.splice(action.index, 1);
-			return { ...state, results: newResults };
 
 		default:
 			console.log('uncaught action in reducer ', action.type);
