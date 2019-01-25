@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import AuthContext from '../auth-context';
 
-import { AuthContext } from '../App';
+class Login extends Component {
+	static contextType = AuthContext;
 
-const login = props => (
-  <AuthContext.Consumer>
-    {authContext => {
-      return (
-        <button onClick={authContext.toggleAuth}>
-          {authContext.isAuth ? 'Logout' : 'Login'}
-        </button>
-      );
-    }}
-  </AuthContext.Consumer>
-);
+	render() {
+		return <button onClick={this.context.toggleAuth}>{this.context.isAuth ? 'Logout' : 'Login'}</button>;
+	}
+}
 
-export default login;
+export default Login;

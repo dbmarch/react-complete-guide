@@ -16,7 +16,7 @@ class AddPerson extends Component {
 		this.setState({ age: event.target.value });
 	};
 
-	render(props) {
+	render() {
 		return (
 			<div className="AddPerson">
 				<input type="text" placeholder="Name" onChange={this.nameChangedHandler} value={this.state.name} />
