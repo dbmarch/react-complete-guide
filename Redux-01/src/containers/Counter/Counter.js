@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import CounterControl from '../../components/CounterControl/CounterControl';
-import CounterOutput from '../../components/CounterOutput/CounterOutput';
+import * as actionCreators from '../../store/actions'
+
+import CounterControl from '../../components/CounterControl/CounterControl'
+import CounterOutput from '../../components/CounterOutput/CounterOutput'
 
 class Counter extends Component {
 	render() {
-		let results = [];
+		let results = []
 
 		this.props.results.forEach((result, id) => {
 			results.push(
 				<li
 					onClick={() => {
-						this.props.onDeleteResult(id);
+						this.props.onDeleteResult(id)
 					}}
 					key={id}
 				>
 					{result}
 				</li>
-			);
-		});
+			)
+		})
 
 		return (
 			<div>
@@ -32,14 +33,14 @@ class Counter extends Component {
 				<hr />
 				<button
 					onClick={() => {
-						this.props.onStoreResult(this.props.ctr);
+						this.props.onStoreResult(this.props.ctr)
 					}}
 				>
 					Store Result
 				</button>
 				<ul>{results}</ul>
 			</div>
-		);
+		)
 	}
 }
 
@@ -47,21 +48,21 @@ const mapStateToProps = state => {
 	return {
 		ctr: state.ctr.counter,
 		results: state.res.results,
-	};
-};
+	}
+}
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
-		onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-		onAddCounter: () => dispatch({ type: actionTypes.ADD, value: 5 }),
-		onSubtractCounter: () => dispatch({ type: actionTypes.SUBTRACT, value: 5 }),
-		onStoreResult: result => dispatch({ type: actionTypes.STORE_RESULT, result }),
-		onDeleteResult: index => dispatch({ type: actionTypes.DELETE_RESULT, index }),
-	};
-};
+		onIncrementCounter: () => dispatch(actionCreators.increment()),
+		onDecrementCounter: () => dispatch(actionCreators.decrement()),
+		onAddCounter: () => dispatch(actionCreators.add(5)),
+		onSubtractCounter: () => dispatch(actionCreators.subtract(5)),
+		onStoreResult: result => dispatch(actionCreators.storeResult(result)),
+		onDeleteResult: index => dispatch(actionCreators.deleteResult(index)),
+	}
+}
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Counter);
+)(Counter)

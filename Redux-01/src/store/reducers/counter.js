@@ -1,24 +1,24 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
 	counter: 0,
-};
+}
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.INCREMENT:
-			return { ...state, counter: state.counter + 1 };
+			return { ...state, counter: state.counter + 1 }
 		case actionTypes.DECREMENT:
-			return { ...state, counter: state.counter - 1 };
+			return { ...state, counter: state.counter - 1 }
 		case actionTypes.ADD:
-			return { ...state, counter: state.counter + action.value };
+			return { ...state, counter: state.counter + action.value }
 		case actionTypes.SUBTRACT:
-			return { ...state, counter: state.counter - action.value };
+			return { ...state, counter: state.counter - action.value }
 
 		default:
-			console.log('uncaught action in reducer ', action.type);
-			return state;
+			console.log('uncaught action in reducer ', action.type)
+			return state
 	}
-};
+}
 
-export default reducer;
+export default reducer
