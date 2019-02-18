@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const todo = props => {
 	const [todoName, setTodoName] = useState('')
 	const [todoList, setTodoList] = useState([])
 
+	useEffect(() => {
+		axios
+			.get('https://todo-hook.firebaseio.com/todos.json')
+			.then(result => {
+				console.log('Retrieved Data', result)
+			})
+			.catch(err => console.log(err))
+	})
 	// const [todoState, setTodoState] = useState({ userinput: '', todoList: [] })
 
 	const inputChangeHandler = event => {
@@ -15,6 +24,14 @@ const todo = props => {
 	const todoAddHandler = () => {
 		if (todoName) {
 			setTodoList(todoList.concat(todoName))
+			axios
+				.post('https://todo-hook.firebaseio.com/todos.json', { name: todoName })
+				.then(res => {
+					console.log(res)
+				})
+				.catch(err => {
+					console.log(err)
+				})
 			setTodoName('')
 		}
 		// if (todoState.userInput) {
